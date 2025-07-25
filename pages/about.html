@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Afric Prudent</title>
+    <meta name="description" content="Learn about Afric Prudent Limited's mission to promote sustainable tourism and media content across Africa and the Caribbean.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.jpg">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page-specific styles */
+        
+        .about-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .mission-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .mission-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+        
+        .mission-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .mission-content h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .mission-content p {
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+        
+        .values-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-gray-light);
+        }
+        
+        .values-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .value-item {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+        }
+        
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .team-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-md);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            margin-top: var(--spacing-md);
+        }
+        
+        .team-name {
+            font-size: var(--font-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .team-position {
+            color: var(--color-primary);
+            font-size: var(--font-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .team-bio {
+            color: var(--color-gray-dark);
+            font-size: var(--font-sm);
+            line-height: 1.6;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        .team-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--color-gray-light);
+            color: var(--color-gray-dark);
+            transition: var(--transition-fast);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .partners-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-gray-light);
+            text-align: center;
+        }
+        
+        .partners-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+            align-items: center;
+        }
+        
+        .partner-logo {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+        }
+        
+        .milestones-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: var(--spacing-xl) auto 0;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--color-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: var(--spacing-lg);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-left {
+            left: 0;
+        }
+        
+        .timeline-right {
+            left: 50%;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        
+        .timeline-year {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 992px) {
+            .mission-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline::before {
+                left: 40px;
+            }
+            .timeline-content {
+                width: calc(100% - 80px);
+                left: 80px;
+            }
+            .timeline-marker {
+                left: 40px;
+            }
+            .timeline-left,
+            .timeline-right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Afric Prudent</h1>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html" class="active">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="book-btn">
+                    <a href="book.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Banner -->
+    <section class="about-banner">
+        <div class="container">
+            <h1>About Afric Prudent</h1>
+            <p>Discover our mission, values, and the team behind promoting authentic African and Caribbean tourism experiences</p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-container">
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Afric Prudent Team Meeting">
+                </div>
+                <div class="mission-content">
+                    <h2>Our Mission & Vision</h2>
+                    <p>
+                        At Afric Prudent Limited, our mission is to promote sustainable tourism development across Africa and the Caribbean, showcasing the authentic cultural heritage and natural beauty of these regions while ensuring economic benefits flow to local communities.
+                    </p>
+                    <p>
+                        We envision a world where tourism serves as a powerful force for cultural preservation, environmental conservation, and economic empowerment. Through media, education, and direct engagement, we aim to transform how travelers experience Africa and the
+                        Caribbean, moving beyond stereotypes to discover the rich diversity and profound stories these regions have to share.
+                    </p>
+                    <p>
+                        Founded in 2018, Afric Prudent has grown from a small blog into a comprehensive platform that connects travelers with authentic experiences, educates audiences through compelling media content, and works with local partners to develop sustainable tourism
+                        initiatives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="values-container">
+                <h2>Our Core Values</h2>
+                <p>These principles guide everything we do at Afric Prudent, from the destinations we promote to how we engage with communities.</p>
+
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Authenticity</h3>
+                        <p>We celebrate and promote genuine cultural experiences that honor local traditions and perspectives.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Sustainability</h3>
+                        <p>We advocate for tourism practices that protect environments and benefit local economies for generations to come.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community</h3>
+                        <p>We believe tourism should empower and respect local communities, ensuring they are primary beneficiaries.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Education</h3>
+                        <p>We use storytelling and media to deepen understanding about African and Caribbean cultures, histories and environments.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Partnership</h3>
+                        <p>We work collaboratively with local businesses, governments and communities to create mutual benefits.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>We embrace new ideas and technologies to address challenges and create opportunities in tourism development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="text-center">Meet Our Team</h2>
+            <p class="text-center">The passionate individuals behind Afric Prudent's mission to transform tourism in Africa and the Caribbean</p>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1567515004624-219c11d31f2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Kwame Mensah">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Kwame Mensah</h3>
+                        <p class="team-position">Founder & CEO</p>
+                        <p class="team-bio">With over 15 years of experience in sustainable tourism, Kwame founded Afric Prudent to showcase the authentic cultural experiences of Africa and the Caribbean.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Aisha Johnson">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Aisha Johnson</h3>
+                        <p class="team-position">Head of Media & Content</p>
+                        <p class="team-bio">Aisha oversees our media production, bringing stories from across the African diaspora to life through compelling articles, videos and photography.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Marcus Bennett">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Marcus Bennett</h3>
+                        <p class="team-position">Caribbean Region Director</p>
+                        <p class="team-bio">Based in Jamaica, Marcus leads our Caribbean operations, developing partnerships with local tour operators and cultural institutions.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Nana Ama Owusu">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Nana Ama Owusu</h3>
+                        <p class="team-position">Sustainability Officer</p>
+                        <p class="team-bio">With a background in environmental science, Nana ensures our tourism initiatives meet rigorous sustainability standards.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey/Milestones -->
+    <section class="milestones-section">
+        <div class="container text-center">
+            <h2>Our Journey</h2>
+            <p>Key milestones in Afric Prudent's evolution as a leader in sustainable tourism</p>
+
+            <div class="timeline">
+                <!-- Milestone 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content timeline-left">
+                        <span class="timeline-year">2018</span>
+                        <h3>The Beginning</h3>
+                        <p>Afric Prudent was founded in Accra, Ghana with a mission to change the narrative of tourism in Africa.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content timeline-right">
+                        <span class="timeline-year">2019</span>
+                        <h3>Caribbean Expansion</h3>
+                        <p>Opened our first Caribbean office in Kingston, Jamaica to promote cultural connections between Africa and the Caribbean.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content timeline-left">
+                        <span class="timeline-year">2020</span>
+                        <h3>Digital Transformation</h3>
+                        <p>Launched our digital platform to connect travelers with authentic experiences and educational content.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content timeline-right">
+                        <span class="timeline-year">2021</span>
+                        <h3>Sustainable Tourism Award</h3>
+                        <p>Received international recognition for our community-based tourism initiatives in rural Ghana.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content timeline-left">
+                        <span class="timeline-year">2022</span>
+                        <h3>Media Production</h3>
+                        <p>Launched our documentary series "Hidden Stories" highlighting untold narratives from across the African diaspora.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content timeline-right">
+                        <span class="timeline-year">2023</span>
+                        <h3>Global Partnerships</h3>
+                        <p>Formed strategic alliances with major tourism boards and international organizations to promote sustainable travel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <h2>Our Partners</h2>
+            <p>We collaborate with organizations that share our commitment to sustainable tourism and cultural preservation</p>
+
+            <div class="partners-logo-grid">
+                <!-- Using placeholder logos for demonstration purposes -->
+                <div class="partner-logo">
+                    <img src="https://placehold.co/180x60/e2e8f0/64748b?text=Ghana+Tourism" alt="Ghana Tourism Authority">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://placehold.co/180x60/e2e8f0/64748b?text=Jamaica+Tourist+Board" alt="Jamaica Tourist Board">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://placehold.co/180x60/e2e8f0/64748b?text=UNWTO" alt="United Nations World Tourism Organization">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://placehold.co/180x60/e2e8f0/64748b?text=African+Union" alt="African Union">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://placehold.co/180x60/e2e8f0/64748b?text=CARICOM" alt="Caribbean Community">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://placehold.co/180x60/e2e8f0/64748b?text=Cultural+Heritage+Fund" alt="Cultural Heritage Fund">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section" style="background-color: var(--color-primary); color: white; padding: var(--spacing-xl) 0; text-align: center;">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p style="max-width: 700px; margin: var(--spacing-md) auto var(--spacing-lg);">
+                Help us promote sustainable tourism and cultural preservation across Africa and the Caribbean. Whether you're a traveler, a tourism professional, or a media partner, there are many ways to get involved.
+            </p>
+            <a href="contact.html" class="btn btn-light">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated with Our Newsletter</h2>
+            <p>Subscribe to receive updates on our projects, new destinations, and opportunities to get involved.</p>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h3>Afric Prudent Limited</h3>
+                    <p>Promoting Tourism Development and Sustainability across Africa and Caribbean countries through media, education, and cultural preservation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Popular Destinations -->
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destinations.html#ghana">Ghana</a></li>
+                        <li><a href="destinations.html#jamaica">Jamaica</a></li>
+                        <li><a href="#">Kenya (Coming Soon)</a></li>
+                        <li><a href="#">South Africa (Coming Soon)</a></li>
+                        <li><a href="#">Barbados (Coming Soon)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new destinations, articles, and events.</p>
+                    <form class="footer-newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-tertiary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Afric Prudent Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

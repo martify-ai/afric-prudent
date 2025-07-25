@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Afric Prudent</title>
+    <meta name="description" content="Get in touch with Afric Prudent Limited for tourism inquiries, media collaborations, and booking assistance.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.jpg">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page-specific styles */
+        
+        .contact-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .contact-content {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .contact-info {
+            padding: var(--spacing-lg);
+            background-color: var(--color-gray-light);
+            border-radius: var(--border-radius-md);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-info-item i {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: var(--font-md);
+        }
+        
+        .contact-info-item .info-content {
+            flex: 1;
+        }
+        
+        .contact-info-item h4 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-md);
+        }
+        
+        .social-links-large {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .social-links-large a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-gray);
+            color: var(--color-secondary);
+            border-radius: 50%;
+            font-size: var(--font-lg);
+            transition: var(--transition-fast);
+        }
+        
+        .social-links-large a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form-container {
+            padding: var(--spacing-lg);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-form-container h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-row {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-row.two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-gray);
+            border-radius: var(--border-radius-md);
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--font-sm);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .form-submit {
+            margin-top: var(--spacing-lg);
+        }
+        
+        .form-submit button {
+            width: 100%;
+            padding: 1rem;
+            font-size: var(--font-md);
+        }
+        
+        .map-container {
+            margin-top: var(--spacing-xxl);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                order: 2;
+            }
+            .contact-form-container {
+                order: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row.two-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Afric Prudent</h1>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="book-btn">
+                    <a href="book.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Banner -->
+    <section class="contact-banner">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our team for inquiries, collaboration, or booking assistance</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+
+                    <!-- Address -->
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <h4>Our Location</h4>
+                            <p>123 Tourism Avenue, Accra, Ghana</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="info-content">
+                            <h4>Phone Number</h4>
+                            <p>+233 123 456 789</p>
+                            <p>+1 876 543 2109 (Caribbean Office)</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <h4>Email Address</h4>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86efe8e0e9c6e7e0f4efe5f6f4f3e2e3e8f2a8e5e9eb">[email&#160;protected]</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e4c4141454740495d6e4f485c474d5e5c5b4a4b405a004d4143">[email&#160;protected]</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Office Hours -->
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-content">
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                            <p>Saturday: 10:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <h4>Follow Us On</h4>
+                    <div class="social-links-large">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Send Us a Message</h3>
+                    <form class="contact-form">
+                        <div class="form-row two-cols">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Your email address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row two-cols">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject">
+                                    <option value="">Select a subject</option>
+                                    <option value="booking">Booking Inquiry</option>
+                                    <option value="information">General Information</option>
+                                    <option value="partnership">Partnership/Collaboration</option>
+                                    <option value="feedback">Feedback/Suggestions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254511.84214429174!2d-0.33594966899339845!3d5.5911363654353845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0x408e8131b8d3e1c8!2sAccra%2C%20Ghana!5e0!3m2!1sen!2sus!4v1687162732837!5m2!1sen!2sus"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" style="background-color: var(--color-gray-light); padding: var(--spacing-xxl) 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-xl);">Frequently Asked Questions</h2>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <h3>How can I book a tour or experience?</h3>
+                    <p>You can book directly through our website by visiting the "Book Now" page, or you can contact our bookings team via email at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4969b9b9f9d9a9387b49592869d9784868190919a80da979b99">[email&#160;protected]</a>                        or by phone. We recommend booking in advance, especially during peak seasons.</p>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <h3>What payment methods do you accept?</h3>
+                    <p>We accept major credit cards (Visa, MasterCard, American Express), bank transfers, and mobile payment options like M-Pesa in select countries. For specific tours, a deposit may be required to secure your booking.</p>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <h3>What is your cancellation policy?</h3>
+                    <p>Our standard cancellation policy allows for a full refund if cancelled 30 days before the scheduled tour. Cancellations within 14-30 days receive a 50% refund. Cancellations less than 14 days before the tour are non-refundable. However,
+                        policies may vary for specific packages and destinations.</p>
+                </div>
+
+                <div>
+                    <h3>Do you offer custom or private tours?</h3>
+                    <p>Yes, we specialize in creating customized tours and experiences for individuals, families, and groups. Contact our team with your requirements, and we'll design a personalized itinerary that meets your interests, timeline, and budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated with Our Newsletter</h2>
+            <p>Subscribe to receive updates on new destinations, travel guides, and exclusive offers.</p>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h3>Afric Prudent Limited</h3>
+                    <p>Promoting Tourism Development and Sustainability across Africa and Caribbean countries through media, education, and cultural preservation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Popular Destinations -->
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destinations.html#ghana">Ghana</a></li>
+                        <li><a href="destinations.html#jamaica">Jamaica</a></li>
+                        <li><a href="#">Kenya (Coming Soon)</a></li>
+                        <li><a href="#">South Africa (Coming Soon)</a></li>
+                        <li><a href="#">Barbados (Coming Soon)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new destinations, articles, and events.</p>
+                    <form class="footer-newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-tertiary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Afric Prudent Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

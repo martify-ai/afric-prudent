@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | Afric Prudent</title>
+    <meta name="description" content="Explore our curated selection of destinations across Africa and the Caribbean with authentic cultural experiences and sustainable tourism options.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.jpg">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page-specific styles */
+        
+        .destination-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .filter-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--color-gray-light);
+        }
+        
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .filter-item {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-gray);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .filter-item:hover,
+        .filter-item.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .country-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .country-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .country-info {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        
+        .country-flag {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .country-quick-facts {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .fact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .fact-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .fact-label {
+            font-size: var(--font-xs);
+            color: var(--color-gray-dark);
+        }
+        
+        .fact-value {
+            font-weight: 600;
+        }
+        
+        .destination-locations {
+            margin-top: var(--spacing-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .country-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-md);
+            }
+            .country-quick-facts {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Afric Prudent</h1>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html" class="active">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="book-btn">
+                    <a href="book.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Destination Banner -->
+    <section class="destination-banner">
+        <div class="container">
+            <h1>Discover Our Destinations</h1>
+            <p>Explore authentic experiences across Africa and the Caribbean islands</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <h2>Find Your Perfect Destination</h2>
+            <p>Filter by region or experience type to discover your next adventure</p>
+
+            <div class="filter-container">
+                <span class="filter-item active">All</span>
+                <span class="filter-item">Africa</span>
+                <span class="filter-item">Caribbean</span>
+                <span class="filter-item">Beach</span>
+                <span class="filter-item">Wildlife</span>
+                <span class="filter-item">Cultural</span>
+                <span class="filter-item">Adventure</span>
+                <span class="filter-item">Historical</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ghana Section -->
+    <section class="country-section" id="ghana">
+        <div class="container">
+            <div class="country-header">
+                <div class="country-info">
+                    <img src="https://flagcdn.com/w160/gh.png" alt="Ghana Flag" class="country-flag">
+                    <h2>Ghana</h2>
+                </div>
+                <a href="destinations/ghana.html" class="view-all">
+                    Explore Ghana <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="country-quick-facts">
+                <div class="fact-item">
+                    <i class="fas fa-map-marker-alt fact-icon"></i>
+                    <span class="fact-label">Capital</span>
+                    <span class="fact-value">Accra</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-language fact-icon"></i>
+                    <span class="fact-label">Language</span>
+                    <span class="fact-value">English</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-coins fact-icon"></i>
+                    <span class="fact-label">Currency</span>
+                    <span class="fact-value">Ghanaian Cedi</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-plane fact-icon"></i>
+                    <span class="fact-label">Best Time</span>
+                    <span class="fact-value">Oct-Apr</span>
+                </div>
+            </div>
+
+            <p>Ghana, known as the "Gateway to Africa," offers a rich tapestry of cultural heritage, historical significance, and natural beauty. From the vibrant markets of Accra to the historic Cape Coast Castle, Ghana provides authentic experiences that
+                connect visitors with West African traditions and history.</p>
+
+            <div class="destination-locations">
+                <h3>Popular Destinations in Ghana</h3>
+                <div class="destinations-grid">
+                    <!-- Destination Card 1 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1596431889534-4b729ed12bf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cape Coast, Ghana">
+                        </div>
+                        <div class="destination-content">
+                            <h3>Cape Coast</h3>
+                            <div class="rating">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </span>
+                                <span class="rating-number">4.8</span>
+                            </div>
+                            <p>Explore the historic Cape Coast Castle, a UNESCO World Heritage site, and learn about the tragic history of the transatlantic slave trade.</p>
+                            <a href="destinations/ghana-cape-coast.html" class="btn btn-outline">Explore</a>
+                        </div>
+                    </div>
+
+                    <!-- Destination Card 2 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1568302519344-e448e1df2488?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Accra, Ghana">
+                        </div>
+                        <div class="destination-content">
+                            <h3>Accra</h3>
+                            <div class="rating">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                                <span class="rating-number">4.0</span>
+                            </div>
+                            <p>Visit the vibrant capital city with its colorful markets, cultural museums, and beautiful beaches along the Gulf of Guinea.</p>
+                            <a href="destinations/ghana-accra.html" class="btn btn-outline">Explore</a>
+                        </div>
+                    </div>
+
+                    <!-- Destination Card 3 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt="Kakum National Park, Ghana">
+                        </div>
+                        <div class="destination-content">
+                            <h3>Kakum National Park</h3>
+                            <div class="rating">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                                <span class="rating-number">4.9</span>
+                            </div>
+                            <p>Experience the famous canopy walkway suspended 30 meters above the ground, offering spectacular views of the rainforest.</p>
+                            <a href="destinations/ghana-kakum.html" class="btn btn-outline">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jamaica Section -->
+    <section class="country-section" id="jamaica" style="background-color: var(--color-gray-light);">
+        <div class="container">
+            <div class="country-header">
+                <div class="country-info">
+                    <img src="https://flagcdn.com/w160/jm.png" alt="Jamaica Flag" class="country-flag">
+                    <h2>Jamaica</h2>
+                </div>
+                <a href="destinations/jamaica.html" class="view-all">
+                    Explore Jamaica <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="country-quick-facts">
+                <div class="fact-item">
+                    <i class="fas fa-map-marker-alt fact-icon"></i>
+                    <span class="fact-label">Capital</span>
+                    <span class="fact-value">Kingston</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-language fact-icon"></i>
+                    <span class="fact-label">Language</span>
+                    <span class="fact-value">English</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-coins fact-icon"></i>
+                    <span class="fact-label">Currency</span>
+                    <span class="fact-value">Jamaican Dollar</span>
+                </div>
+                <div class="fact-item">
+                    <i class="fas fa-plane fact-icon"></i>
+                    <span class="fact-label">Best Time</span>
+                    <span class="fact-value">Nov-May</span>
+                </div>
+            </div>
+
+            <p>Jamaica, the birthplace of reggae music, is a vibrant Caribbean island known for its stunning beaches, lush mountains, and rich cultural heritage. Beyond the resorts, visitors can explore rainforests, cascading waterfalls, and immerse themselves
+                in the island's unique music, food, and warm hospitality.</p>
+
+            <div class="destination-locations">
+                <h3>Popular Destinations in Jamaica</h3>
+                <div class="destinations-grid">
+                    <!-- Destination Card 1 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1610641686202-e55b4a6fc5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Montego Bay, Jamaica">
+                        </div>
+                        <div class="destination-content">
+                            <h3>Montego Bay</h3>
+                            <div class="rating">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </span>
+                                <span class="rating-number">4.7</span>
+                            </div>
+                            <p>Enjoy pristine beaches, water sports, and vibrant nightlife in one of Jamaica's most popular tourist destinations.</p>
+                            <a href="destinations/jamaica-montego-bay.html" class="btn btn-outline">Explore</a>
+                        </div>
+                    </div>
+
+                    <!-- Destination Card 2 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1541748603027-cbfefa3a6c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1468&q=80" alt="Negril, Jamaica">
+                        </div>
+                        <div class="destination-content">
+                            <h3>Negril</h3>
+                            <div class="rating">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                                <span class="rating-number">4.9</span>
+                            </div>
+                            <p>Experience the famous Seven Mile Beach, watch cliff divers at Rick's Cafe, and enjoy spectacular sunsets.</p>
+                            <a href="destinations/jamaica-negril.html" class="btn btn-outline">Explore</a>
+                        </div>
+                    </div>
+
+                    <!-- Destination Card 3 -->
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1613704695825-7c7ac11cccb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Ocho Rios, Jamaica">
+                        </div>
+                        <div class="destination-content">
+                            <h3>Ocho Rios</h3>
+                            <div class="rating">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                                <span class="rating-number">4.2</span>
+                            </div>
+                            <p>Climb the famous Dunn's River Falls, explore botanical gardens, and enjoy eco-adventures in this resort town.</p>
+                            <a href="destinations/jamaica-ocho-rios.html" class="btn btn-outline">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Destinations Section -->
+    <section class="more-destinations">
+        <div class="container">
+            <h2>More Destinations Coming Soon</h2>
+            <p>We're constantly expanding our selection of authentic experiences across Africa and the Caribbean. Check back for new destinations.</p>
+            <div class="destinations-grid" style="margin-top: var(--spacing-xl);">
+                <!-- Kenya -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1518667139242-1d4bfdcaac4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1468&q=80" alt="Kenya">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Coming Soon</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Kenya</h3>
+                        <p>Experience the iconic safari adventures and diverse wildlife in the national parks of Kenya.</p>
+                    </div>
+                </div>
+
+                <!-- Barbados -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1591209781500-0382d29321c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Barbados">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Coming Soon</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Barbados</h3>
+                        <p>Discover the pristine beaches, colonial architecture, and rich culture of this beautiful Caribbean island.</p>
+                    </div>
+                </div>
+
+                <!-- South Africa -->
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1372&q=80" alt="South Africa">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Coming Soon</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>South Africa</h3>
+                        <p>Explore diverse landscapes from Cape Town's Table Mountain to the vibrant streets of Johannesburg.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated with Our Newsletter</h2>
+            <p>Subscribe to receive updates on new destinations, travel guides, and exclusive offers.</p>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h3>Afric Prudent Limited</h3>
+                    <p>Promoting Tourism Development and Sustainability across Africa and Caribbean countries through media, education, and cultural preservation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Popular Destinations -->
+                <div class="footer-section">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="#ghana">Ghana</a></li>
+                        <li><a href="#jamaica">Jamaica</a></li>
+                        <li><a href="#">Kenya (Coming Soon)</a></li>
+                        <li><a href="#">South Africa (Coming Soon)</a></li>
+                        <li><a href="#">Barbados (Coming Soon)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new destinations, articles, and events.</p>
+                    <form class="footer-newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-tertiary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Afric Prudent Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

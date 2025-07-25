@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | Afric Prudent</title>
+    <meta name="description" content="Explore our collection of articles on African and Caribbean tourism, culture, sustainability, and travel experiences.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.jpg">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page-specific styles */
+        
+        .articles-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .categories-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--color-gray-light);
+        }
+        
+        .categories-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            justify-content: center;
+        }
+        
+        .category-item {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--color-gray);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 500;
+        }
+        
+        .category-item:hover,
+        .category-item.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto var(--spacing-xl);
+        }
+        
+        .search-box form {
+            display: flex;
+            overflow: hidden;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .search-box input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-gray);
+            border-right: none;
+            border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+        }
+        
+        .search-box button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+        }
+        
+        .featured-article {
+            margin-bottom: var(--spacing-xxl);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .featured-article-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .featured-article-image {
+            height: 400px;
+        }
+        
+        .featured-article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-article-text {
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-article-text h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-xs);
+            color: var(--color-gray-dark);
+        }
+        
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .article-excerpt {
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-xxl);
+            gap: var(--spacing-xs);
+        }
+        
+        .pagination-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--color-gray);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .pagination-item:hover,
+        .pagination-item.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+        
+        @media (max-width: 992px) {
+            .featured-article-content {
+                grid-template-columns: 1fr;
+            }
+            .featured-article-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Afric Prudent</h1>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html" class="active">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="book-btn">
+                    <a href="book.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Articles Banner -->
+    <section class="articles-banner">
+        <div class="container">
+            <h1>Articles & Stories</h1>
+            <p>Discover insights, travel guides, and cultural stories from Africa and the Caribbean</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="search-box">
+                <form>
+                    <input type="text" placeholder="Search articles...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="categories-container">
+                <span class="category-item active">All</span>
+                <span class="category-item">Sustainability</span>
+                <span class="category-item">Culture</span>
+                <span class="category-item">Wildlife</span>
+                <span class="category-item">Travel Tips</span>
+                <span class="category-item">Food</span>
+                <span class="category-item">History</span>
+                <span class="category-item">Interviews</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article Section -->
+    <section class="featured-article-section">
+        <div class="container">
+            <div class="featured-article">
+                <div class="featured-article-content">
+                    <div class="featured-article-image">
+                        <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Sustainable Tourism in East Africa">
+                    </div>
+                    <div class="featured-article-text">
+                        <span class="category-item">Sustainability</span>
+                        <h2>Sustainable Tourism Practices Transforming East Africa</h2>
+                        <div class="article-meta">
+                            <div class="article-meta-item">
+                                <i class="far fa-calendar"></i>
+                                <span>June 15, 2023</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="far fa-user"></i>
+                                <span>By Michael Carter</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                        <p class="article-excerpt">
+                            Across East Africa, innovative sustainable tourism initiatives are helping to preserve ecosystems, empower local communities, and provide authentic experiences for travelers. From carbon-neutral lodges in Kenya to community-based tourism in Tanzania,
+                            discover how these practices are transforming the region's tourism industry while preserving its natural and cultural heritage.
+                        </p>
+                        <a href="articles/sustainable-tourism.html" class="btn btn-primary">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid Section -->
+    <section class="articles-grid-section">
+        <div class="container">
+            <h2>Latest Articles</h2>
+            <div class="articles-grid">
+                <!-- Article Card 1 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1580237072825-0eb50fa0ce50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="The Rich Cultural Heritage of Barbados">
+                        <span class="article-category">Culture</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>The Rich Cultural Heritage of Barbados</h3>
+                        <span class="article-date">May 22, 2023</span>
+                        <p>Exploring the unique blend of African, British, and Caribbean influences that have shaped Barbadian culture, from music and dance to cuisine and festivals.</p>
+                        <a href="articles/barbados-heritage.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1468&q=80" alt="Safari Guide: Best Wildlife Experiences in Kenya">
+                        <span class="article-category">Wildlife</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Safari Guide: Best Wildlife Experiences in Kenya</h3>
+                        <span class="article-date">April 10, 2023</span>
+                        <p>The ultimate guide to witnessing the majestic wildlife of the Maasai Mara, including tips on responsible wildlife viewing and conservation efforts.</p>
+                        <a href="articles/kenya-safari.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 3 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1580196923194-dfb51a4d3e11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Jamaican Cuisine: A Flavor Journey">
+                        <span class="article-category">Food</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Jamaican Cuisine: A Flavor Journey</h3>
+                        <span class="article-date">March 18, 2023</span>
+                        <p>Discover the vibrant flavors and unique ingredients that make Jamaican cuisine one of the world's most distinctive culinary traditions.</p>
+                        <a href="articles/jamaican-cuisine.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 4 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Hidden Gems of West Africa">
+                        <span class="article-category">Travel Tips</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Hidden Gems of West Africa</h3>
+                        <span class="article-date">February 27, 2023</span>
+                        <p>Venture beyond the typical tourist trails to discover secret beaches, mountain retreats, and cultural treasures across West Africa.</p>
+                        <a href="articles/west-africa-gems.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 5 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1594322794055-e510da254da5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1468&q=80" alt="The Story Behind Ghana's Adinkra Symbols">
+                        <span class="article-category">History</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>The Story Behind Ghana's Adinkra Symbols</h3>
+                        <span class="article-date">January 15, 2023</span>
+                        <p>Learn about the meaning and history of Ghana's traditional Adinkra symbols, which represent concepts and aphorisms in Akan culture.</p>
+                        <a href="articles/ghana-adinkra.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 6 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1565888438485-b68a45e215f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Interview with Caribbean Conservation Leaders">
+                        <span class="article-category">Interviews</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Interview with Caribbean Conservation Leaders</h3>
+                        <span class="article-date">December 8, 2022</span>
+                        <p>Conversations with the individuals and organizations working to protect the fragile marine ecosystems of the Caribbean.</p>
+                        <a href="articles/conservation-leaders.html" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <span class="pagination-item active">1</span>
+                <span class="pagination-item">2</span>
+                <span class="pagination-item">3</span>
+                <span class="pagination-item">4</span>
+                <span class="pagination-item">
+                    <i class="fas fa-ellipsis-h"></i>
+                </span>
+                <span class="pagination-item">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Join Our Community of Travel Enthusiasts</h2>
+            <p>Subscribe to our newsletter for the latest articles, travel guides, and exclusive content delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h3>Afric Prudent Limited</h3>
+                    <p>Promoting Tourism Development and Sustainability across Africa and Caribbean countries through media, education, and cultural preservation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Article Categories -->
+                <div class="footer-section">
+                    <h3>Article Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Wildlife</a></li>
+                        <li><a href="#">Travel Tips</a></li>
+                        <li><a href="#">Food & Cuisine</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new articles, destinations, and events.</p>
+                    <form class="footer-newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-tertiary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Afric Prudent Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
