@@ -259,7 +259,7 @@ Header & Navigation
 
 .main-nav .nav-list {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     font-size: 0.95rem;
 }
 
