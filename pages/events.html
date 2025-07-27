@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Afric Prudent</title>
+    <meta name="description" content="Discover upcoming tourism events, cultural festivals, and workshops across Africa and the Caribbean promoted by Afric Prudent Limited.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page-specific styles */
+        
+        .events-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .filter-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--color-gray-light);
+        }
+        
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .filter-item {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-gray);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .filter-item:hover,
+        .filter-item.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+        
+        .featured-event {
+            margin-bottom: var(--spacing-xxl);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .featured-event-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .featured-event-image {
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .featured-event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-event-text {
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-event-text h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: var(--font-sm);
+            color: var(--color-gray-dark);
+        }
+        
+        .event-meta-item i {
+            color: var(--color-primary);
+        }
+        
+        .event-description {
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+        
+        .event-cta {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .event-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-fast);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .event-image {
+            height: 200px;
+            position: relative;
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .event-date-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem;
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            min-width: 60px;
+            font-weight: 500;
+        }
+        
+        .event-date-badge .day {
+            font-size: 1.25rem;
+            display: block;
+        }
+        
+        .event-date-badge .month {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        .event-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--color-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .event-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-content h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .event-details {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .event-details-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-sm);
+            color: var(--color-gray-dark);
+        }
+        
+        .event-details-item i {
+            color: var(--color-primary);
+            width: 16px;
+        }
+        
+        .event-summary {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .load-more {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .newsletter-section {
+            margin-top: var(--spacing-xxl);
+        }
+        
+        @media (max-width: 992px) {
+            .featured-event-content {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .featured-event-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .event-cta {
+                flex-direction: column;
+            }
+            .event-cta .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Afric Prudent</h1>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html" class="active">Events</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="book-btn">
+                    <a href="book.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Events Banner -->
+    <section class="events-banner">
+        <div class="container">
+            <h1>Events & Festivals</h1>
+            <p>Discover cultural celebrations, tourism exhibitions, and workshops across Africa and the Caribbean</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <span class="filter-item active">All Events</span>
+                <span class="filter-item">Festivals</span>
+                <span class="filter-item">Exhibitions</span>
+                <span class="filter-item">Workshops</span>
+                <span class="filter-item">Conferences</span>
+                <span class="filter-item">Ghana</span>
+                <span class="filter-item">Jamaica</span>
+                <span class="filter-item">Virtual</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Event Section -->
+    <section class="featured-event-section">
+        <div class="container">
+            <div class="featured-event">
+                <div class="featured-event-content">
+                    <div class="featured-event-image">
+                        <img src="https://images.unsplash.com/photo-1559456751-057ed03f8ee3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Akwaaba African Travel Market">
+                    </div>
+                    <div class="featured-event-text">
+                        <span class="category-item">Exhibition</span>
+                        <h2>Akwaaba African Travel Market 2023</h2>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <i class="far fa-calendar"></i>
+                                <span>October 15-17, 2023</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Eko Hotel & Suites, Lagos, Nigeria</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>9:00 AM - 5:00 PM</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Join us at Africa's most prominent travel and tourism exhibition, bringing together industry professionals, government representatives, and travel enthusiasts from across the continent and beyond. Afric Prudent will host a special pavilion showcasing
+                            sustainable tourism initiatives from Ghana and Jamaica, along with panel discussions on cultural preservation through tourism.
+                        </p>
+                        <div class="event-cta">
+                            <a href="events/akwaaba-travel-market.html" class="btn btn-primary">Event Details</a>
+                            <a href="#" class="btn btn-outline">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="upcoming-events">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="events-grid">
+                <!-- Event Card 1 -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="PANAFEST">
+                        <div class="event-date-badge">
+                            <span class="day">28</span>
+                            <span class="month">Jul</span>
+                        </div>
+                        <span class="event-type">Festival</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>PANAFEST 2023</h3>
+                        <div class="event-details">
+                            <div class="event-details-item">
+                                <i class="far fa-calendar"></i>
+                                <span>July 28 - August 8, 2023</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Cape Coast, Ghana</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-tag"></i>
+                                <span>From $250</span>
+                            </div>
+                        </div>
+                        <p class="event-summary">
+                            The Pan African Historical Theatre Festival celebrates the resilience of the African spirit through cultural manifestations in the arts, exposing attendees to the intellectual and spiritual contributions of Africa and its diaspora.
+                        </p>
+                        <a href="events/panafest.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Reggae Sumfest">
+                        <div class="event-date-badge">
+                            <span class="day">16</span>
+                            <span class="month">Aug</span>
+                        </div>
+                        <span class="event-type">Festival</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Reggae Sumfest 2023</h3>
+                        <div class="event-details">
+                            <div class="event-details-item">
+                                <i class="far fa-calendar"></i>
+                                <span>August 16-22, 2023</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Montego Bay, Jamaica</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-tag"></i>
+                                <span>From $180</span>
+                            </div>
+                        </div>
+                        <p class="event-summary">
+                            Experience Jamaica's premier music festival showcasing the best of reggae, dancehall, and Caribbean music. Afric Prudent offers special tour packages that combine festival attendance with cultural experiences.
+                        </p>
+                        <a href="events/reggae-sumfest.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sustainable Tourism Workshop">
+                        <div class="event-date-badge">
+                            <span class="day">5</span>
+                            <span class="month">Sep</span>
+                        </div>
+                        <span class="event-type">Workshop</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Sustainable Tourism Workshop Series</h3>
+                        <div class="event-details">
+                            <div class="event-details-item">
+                                <i class="far fa-calendar"></i>
+                                <span>September 5-7, 2023</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Online (Virtual)</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-tag"></i>
+                                <span>Free (Registration Required)</span>
+                            </div>
+                        </div>
+                        <p class="event-summary">
+                            A three-day virtual workshop for tourism professionals focusing on sustainable practices, community engagement, and cultural preservation. Presented by Afric Prudent in partnership with the UNWTO.
+                        </p>
+                        <a href="events/sustainability-workshop.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 4 -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Homowo Festival">
+                        <div class="event-date-badge">
+                            <span class="day">12</span>
+                            <span class="month">Sep</span>
+                        </div>
+                        <span class="event-type">Festival</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Homowo Festival 2023</h3>
+                        <div class="event-details">
+                            <div class="event-details-item">
+                                <i class="far fa-calendar"></i>
+                                <span>September 12-19, 2023</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Accra, Ghana</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-tag"></i>
+                                <span>From $120</span>
+                            </div>
+                        </div>
+                        <p class="event-summary">
+                            Experience the traditional harvest festival of the Ga people, featuring processions, drumming, dancing, and the symbolic "hooting at hunger." Our guided tour provides cultural context and access to private ceremonies.
+                        </p>
+                        <a href="events/homowo-festival.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 5 -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Caribbean Tourism Conference">
+                        <div class="event-date-badge">
+                            <span class="day">22</span>
+                            <span class="month">Sep</span>
+                        </div>
+                        <span class="event-type">Conference</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Caribbean Tourism Resilience Conference</h3>
+                        <div class="event-details">
+                            <div class="event-details-item">
+                                <i class="far fa-calendar"></i>
+                                <span>September 22-24, 2023</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kingston, Jamaica</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-tag"></i>
+                                <span>$350 (Early Bird: $250)</span>
+                            </div>
+                        </div>
+                        <p class="event-summary">
+                            Industry leaders gather to discuss strategies for sustainable tourism recovery and resilience in the face of climate change and economic challenges. Featuring keynote speakers and networking opportunities.
+                        </p>
+                        <a href="events/caribbean-tourism-conference.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 6 -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1526285759976-98cdb3e24886?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Photography Exhibition">
+                        <div class="event-date-badge">
+                            <span class="day">10</span>
+                            <span class="month">Oct</span>
+                        </div>
+                        <span class="event-type">Exhibition</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>"Through African Eyes" Photography Exhibition</h3>
+                        <div class="event-details">
+                            <div class="event-details-item">
+                                <i class="far fa-calendar"></i>
+                                <span>October 10-30, 2023</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>National Museum, Accra</span>
+                            </div>
+                            <div class="event-details-item">
+                                <i class="fas fa-tag"></i>
+                                <span>$15 (Students: $8)</span>
+                            </div>
+                        </div>
+                        <p class="event-summary">
+                            A collection of stunning photographs capturing the cultural richness and natural beauty of Africa, curated by Afric Prudent's media team. Features works from emerging African photographers alongside established artists.
+                        </p>
+                        <a href="events/photography-exhibition.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more">
+                <button class="btn btn-secondary">Load More Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated with Our Events Calendar</h2>
+            <p>Subscribe to receive alerts about upcoming events, festivals, and exclusive offers for Afric Prudent experiences.</p>
+            <form class="newsletter-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h3>Afric Prudent Limited</h3>
+                    <p>Promoting Tourism Development and Sustainability across Africa and Caribbean countries through media, education, and cultural preservation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Event Categories -->
+                <div class="footer-section">
+                    <h3>Event Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Festivals</a></li>
+                        <li><a href="#">Exhibitions</a></li>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Conferences</a></li>
+                        <li><a href="#">Cultural Celebrations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new events, destinations, and articles.</p>
+                    <form class="footer-newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-tertiary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Afric Prudent Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
